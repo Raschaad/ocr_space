@@ -3,7 +3,7 @@ module OcrSpace
     module Convert
         def convert(apikey: @api_key, language: 'eng', isOverlayRequired: false, file: nil, url: nil)
           if file
-            @files = File.new(file)
+            @files = File.read(file)
             @data = OcrSpace::FilePost.post('/parse/image',
                                             body: { apikey: apikey,
                                                     language: language,
@@ -24,7 +24,7 @@ module OcrSpace
 
         def clean_convert(apikey: @api_key, language: 'eng', isOverlayRequired: false, file: nil, url: nil)
           if file
-            @files = File.new(file)
+            @files = File.read(file)
             @data = OcrSpace::FilePost.post('/parse/image',
                                             body: { apikey: apikey,
                                                     language: language,
